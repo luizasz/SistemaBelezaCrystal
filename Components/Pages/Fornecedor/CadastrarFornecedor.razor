@@ -40,18 +40,28 @@
     <input name="email" type="text">
   </span>
 
-  <span class="label-input">
-    <label for="codigo">Código</label>
-    <input name="codigo" type="text">
-  </span>
+  <div class="form-footer">
 
-  <fieldset>
-    <legend>Situação</legend>
+    <span class="label-input">
+      <label for="codigo">Código</label>
+      <input name="codigo" type="text">
+    </span>
+    <div>
+      <h3>Situação</h3>
+      <fieldset>
+        <input type="radio" name="situacao" id="ativo" />
+        <label for="ativo">Ativo</label>
 
-    <label for="ativo">Ativo</label>
-    <input type="radio" name="situacao" id="ativo" />
+        <br />
 
-    <label for="inativo">Inativo</label>
-    <input type="radio" name="situacao" id="inativo" />
-  </fieldset>
+        <input type="radio" name="situacao" id="inativo" />
+        <label for="inativo">Inativo</label>
+      </fieldset>
+    </div>
+  </div>
+
+  <div class="buttons">
+    <button class="submit-button" type="submit">Cadastrar</button>
+    <button class="cancel-button" type="button">Cancelar</button>
+  </div>
 </form>
