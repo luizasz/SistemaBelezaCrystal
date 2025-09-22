@@ -1,0 +1,57 @@
+@page "/fornecedor/cadastrar"
+
+<PageTitle>Cadastrar Fornecedor</PageTitle>
+
+<form class="form">
+  <span class="label-input">
+    <label for="nome-fantasia">Nome Fantasia</label>
+    <input name="nome-fantasia" type="text">
+  </span>
+
+  <span class="label-input">
+    <label for="razao-social">Razão Social</label>
+    <input name="razao-social" type="text">
+  </span>
+
+  <span class="label-input">
+    <label for="proprietario">Proprietário</label>
+    <input name="proprietario" type="text">
+  </span>
+
+  <span id="cnpj-tel-insc">
+    <span class="label-input">
+      <label for="cnpj">CNPJ</label>
+      <input name="cnpj" type="text">
+    </span>
+
+    <span class="label-input">
+      <label for="telefone">Telefone</label>
+      <input name="telefone" type="text">
+    </span>
+
+    <span class="label-input">
+      <label for="inscricao-estadual">Inscrição Estadual</label>
+      <input name="inscricao-estadual" type="text">
+    </span>
+  </span>
+
+  <span class="label-input">
+    <label for="email">E-mail</label>
+    <input name="email" type="text">
+  </span>
+
+  <span class="label-input">
+    <label for="codigo">Código</label>
+    <input name="codigo" type="text">
+  </span>
+
+  <fieldset>
+    <legend>Situação</legend>
+
+    <label for="ativo">Ativo</label>
+    <input type="radio" name="situacao" id="ativo" />
+
+    <label for="inativo">Inativo</label>
+    <input type="radio" name="situacao" id="inativo" />
+  </fieldset>
+</form>
