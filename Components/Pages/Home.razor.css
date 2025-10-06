@@ -1,0 +1,146 @@
+* {
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    border: none;
+    text-decoration: none;
+    transition: 0.2 linear;
+    
+}
+
+body {
+    font-family: "Inter", sans-serif;
+    display: flex;
+    height: 100%;
+}
+
+section {
+    width: 200px;                
+    height: 100vh;               
+    background-color: #d9a8e6;  
+    display: flex;               
+    flex-direction: column;      
+}
+
+/*Estilização - Usuário*/
+.usuario {
+    /*text-align: justify;*/
+    background: #58246D;         
+    padding: 10px;          
+    display: flex;
+    /*align-items: flex-start;*/
+    align-items: center;
+    gap: 10px;
+    /*height: auto;*/
+    /*flex-direction: column;*/
+}
+
+.usuario a {
+    font-size: 18px;             
+    font-weight: bold;          
+    color: #FFF;               
+    text-decoration: none;       
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    position: relative;
+    flex-direction: row;
+
+}
+
+.usuario a:hover {
+    color: #E4BCF3; /*tom mais claro ao passar o mouse*/
+}
+
+.usuario p {
+    color: #E4BCF3;                 
+    font-size: 10px;             
+    /* margin-top: 5px;             
+    /*margin-left: 28px;*/
+    position: absolute;
+    top: 40px;
+    left: 58px;
+    margin: 0;
+    padding: 0;
+}
+
+.usuario img {
+    filter: brightness(0) invert(1); /*deixa o ícone branco*/
+} 
+
+/*Estilização - Menu Lateral*/
+.navmenu {
+    display: flex;               
+    flex-direction: column; 
+    flex-grow: 1;     
+    /*margin-top: 5px;*/            
+}
+
+.navmenu a {
+    display: flex;               
+    align-items: center;         
+    gap: 10px;                   
+    padding: 12px 15px;         
+    font-size: 15px;             
+    color: #111111;                
+    text-decoration: none;       
+    transition: background 0.3s; 
+}
+
+.navmenu a img {
+    width: 20px;                 
+    height: 20px;                
+}
+
+.navmenu a:hover {
+    background: rgba(255,255,255,0.4); 
+}
+
+/*Estilização - Atalhos*/
+.highlight {
+    color: #58246D;
+    cursor: pointer;
+}
+
+.container {
+    margin: 45px;
+    font-size: 20px;
+    flex-direction: column;
+}
+
+.nav-atalhos {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 colunas */
+    justify-items: center;
+    margin-top: 40px; /* Espaço entre o título e os atalhos */
+    gap: 40px;
+}
+
+.nav-atalhos a {
+    display: block;
+    border-radius: 12px;
+    overflow: hidden; /* Garante que nada vaze da borda */
+    transition: background-color 0.3s;
+    width: 240px;
+    height: 160px;
+}
+
+.nav-atalhos a img {
+    /*width: 250px;
+    height: 160px;*/
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: contain;
+}
+
+.nav-atalhos a:hover {
+    background-color: #f8f1fc;
+    cursor: pointer;
+}
+
+.navmenu .bottom-links {
+    margin-top: auto; /* Empurra para o final do menu */
+    display: flex;
+    flex-direction: column;
+}

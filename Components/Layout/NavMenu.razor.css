@@ -1,3 +1,81 @@
+
+/*Estilização - Menu Lateral*/
+.navmenu {
+    display: flex;               
+    flex-direction: column; 
+    flex-grow: 1;     
+    /*margin-top: 5px;*/            
+}
+
+.navmenu a {
+    display: flex;               
+    align-items: center;         
+    gap: 10px;                   
+    padding: 12px 15px;         
+    font-size: 15px;             
+    color: #111111;                
+    text-decoration: none;       
+    transition: background 0.3s; 
+}
+
+.navmenu a img {
+    width: 20px;                 
+    height: 20px;                
+}
+
+.navmenu a:hover {
+    background: rgba(255,255,255,0.4); 
+}
+
+/*Estilização - Atalhos*/
+.highlight {
+    color: #58246D;
+    cursor: pointer;
+}
+
+.container {
+    margin: 45px;
+    font-size: 20px;
+    flex-direction: column;
+}
+
+.nav-atalhos {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 colunas */
+    justify-items: center;
+    margin-top: 40px; /* Espaço entre o título e os atalhos */
+    gap: 40px;
+}
+
+.nav-atalhos a {
+    display: block;
+    border-radius: 12px;
+    overflow: hidden; /* Garante que nada vaze da borda */
+    transition: background-color 0.3s;
+    width: 240px;
+    height: 160px;
+}
+
+.nav-atalhos a img {
+    /*width: 250px;
+    height: 160px;*/
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: contain;
+}
+
+.nav-atalhos a:hover {
+    background-color: #f8f1fc;
+    cursor: pointer;
+}
+
+.navmenu .bottom-links {
+    margin-top: auto; /* Empurra para o final do menu */
+    display: flex;
+    flex-direction: column;
+}
+
 .navbar-toggler {
     appearance: none;
     cursor: pointer;
