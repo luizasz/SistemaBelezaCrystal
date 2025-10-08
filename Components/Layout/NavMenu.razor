@@ -4,61 +4,94 @@
     </div>
 </div>
 
-<input type="checkbox" title="Navigation menu" class="navbar-toggler" />
+<section class="navmenu-style">
+    <!-- Usuário -->
+    <div class="usuario">
+        <img width="50" height="50" src="IMG/icon-usuario.svg" alt="usuario">
+        <div class="info-usuario">
+            <span id="href-user">
+                <NavLink href="/user">Usuário</NavLink>
+            </span>
+            <p>Gratuito</p>
+        </div>
+    </div>
 
-<div class="nav-scrollable" onclick="document.querySelector('.navbar-toggler').click()">
-    <nav class="nav flex-column">
-    <NavLink href="/customer">
-        <img width="20" height="20" src="IMG/icon-gestão-clientes.svg" alt="cliente"/>
-        Cliente
-    </NavLink>
+        <nav class="navmenu">
+        <div>
+            <!-- Menu de Navegação -->
+            <NavLink href="/customer" activeClass="active-link">
+                <div class="navmenu-link">
+                    <img src="IMG/icon-gestão-clientes.svg" alt="cliente" />
+                    Cliente
+                </div>
+            </NavLink>
 
-    <NavLink href="/employee">
-        <img width="20" height="20" src="IMG/icon-funcionarios.svg" alt="funcionario"/>
-        Funcionário
-    </NavLink>
+            <NavLink href="/employee" activeClass="active-link">
+                <div class="navmenu-link">
+                    <img src="IMG/icon-funcionarios.svg" alt="funcionario" />
+                    Funcionário
+                </div>
+            </NavLink>
 
-    <NavLink href="/product">
-        <img width="20" height="20" src="IMG/icon-gestão-produto.svg" alt="produto"/>
-        Produto
-    </NavLink>
+            <NavLink href="/product" activeClass="active-link">
+                <div class="navmenu-link">
+                    <img src="IMG/icon-gestão-produto.svg" alt="produto" />
+                    Produto
+                </div>
+            </NavLink>
 
-    <NavLink href="/service">
-    <img width="20" height="20" src="IMG/icon-servicos.svg" alt="servico"/>
-        Serviço
-    </NavLink>
+            <NavLink href="/service" activeClass="active-link">
+                <div class="navmenu-link">
+                    <img src="IMG/icon-servicos.svg" alt="serviço" />
+                    Serviço
+                </div>
+            </NavLink>
 
-    <NavLink href="/scheduling">
-        <img width="20" height="20" src="IMG/icon-calendario.svg" alt="agendamento"/>
-        Agendamento
-    </NavLink>
+            <NavLink href="/scheduling" activeClass="active-link">
+                <div class="navmenu-link">
+                    <img src="IMG/icon-calendario.svg" alt="agendamento" />
+                    Agendamento
+                </div>
+            </NavLink>
 
-    <NavLink href="/supplier">
-        <img width="20" height="20" src="IMG/icon-fornecedores.svg" alt="fornecedor"/>
-        Fornecedor
-    </NavLink>
+            <NavLink href="/supplier" activeClass="active-link">
+                <div class="navmenu-link">
+                    <img src="IMG/icon-fornecedores.svg" alt="fornecedor" />
+                    Fornecedor
+                </div>
+            </NavLink>
 
-    <NavLink href="/finance">
-        <img width="20" height="20" src="IMG/icon-financas.svg" alt="financa"/>
-        Vendas e Finança
-    </NavLink>
+            <NavLink href="/finance" activeClass="active-link">
+                <div class="navmenu-link">
+                    <img src="IMG/icon-financas.svg" alt="finança" />
+                    Vendas e Finança
+                </div>
+            </NavLink>
 
-    <NavLink href="/report">
-        <img width="20" height="20" src="IMG/icon-relatorio.svg" alt="relatorio"/>
-        Relatório
-    </NavLink>
+            <NavLink href="/report" activeClass="active-link">
+                <div class="navmenu-link">
+                    <img src="IMG/icon-relatorio.svg" alt="relatório" />
+                    Relatório
+                </div>
+            </NavLink>
+        </div>
 
-    <!-- Botões fixados embaixo -->
-    <NavLinka href="/settings">
-        <img width="20" height="20" src="IMG/icon-config.svg" alt="configuracoes"/>
-        Configurações
-    </NavLink>
-    
-    <NavLink href="/exit">
-        <img width="20" height="20" src="IMG/icon-logout.svg" alt="sair"/>
-        Sair
-    </NavLink>
+            <!-- Botões fixados embaixo -->
+            <div class="bottom-links">
+                <NavLink href="/settings" activeClass="active-link">
+                    <div class="navmenu-link">
+                        <img src="IMG/icon-config.svg" alt="configurações" />
+                        Configurações
+                    </div>
+                </NavLink>
 
-    </nav>
-</div>
+                <NavLink href="/exit" activeClass="active-link">
+                    <div class="navmenu-link">
+                        <img src="IMG/icon-logout.svg" alt="sair" />
+                        Sair
+                    </div>
+                </NavLink>
+            </div>
 
+        </nav>
+</section>
