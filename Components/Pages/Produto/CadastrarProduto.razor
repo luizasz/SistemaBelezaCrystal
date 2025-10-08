@@ -1,0 +1,128 @@
+    @page "/Produto"
+
+    <PageTitle>Produto</PageTitle> 
+
+    <section>
+    <!-- Usuário -->
+    <div class="usuario">
+        <a href="#user">
+        <img width="40" height="40" src="IMG/icon-usuario.svg" alt="usuario">
+        Usuário</a>
+        <p>Gratuito</p>
+    </div>
+    <!-- Menu lateral -->
+        <nav class="navmenu">
+        <a href="#customer">
+        <img width="20" height="20" src="IMG/icon-gestão-clientes.svg" alt="cliente"/>
+        Cliente</a>
+        <a href="#employee">
+        <img width="20" height="20" src="IMG/icon-funcionarios.svg" alt="funcionario"/>
+        Funcionário</a>
+        <a href="#product">
+        <img width="20" height="20" src="IMG/icon-gestão-produto.svg" alt="produto"/>
+        Produto</a>
+        <a href="#service">
+        <img width="20" height="20" src="IMG/icon-servicos.svg" alt="servico"/>
+        Serviço</a>
+        <a href="#scheduling">
+        <img width="20" height="20" src="IMG/icon-calendario.svg" alt="agendamento"/>
+        Agendamento</a>
+        <a href="#supplier">
+        <img width="20" height="20" src="IMG/icon-fornecedores.svg" alt="fornecedor"/>
+        Fornecedor</a>
+        <a href="#finance">
+        <img width="20" height="20" src="IMG/icon-financas.svg" alt="financa"/>
+        Vendas e Finança</a>
+        <a href="#report">
+        <img width="20" height="20" src="IMG/icon-relatorio.svg" alt="relatorio"/>
+        Relatório</a>
+    <!-- Fixados embaixo -->
+    <div class="bottom-links">
+        <a href="#settings">
+            <img width="20" height="20" src="IMG/icon-config.svg" alt="configuracoes"/>
+            Configurações</a>
+        <a href="#exit">
+            <img width="20" height="20" src="IMG/icon-logout.svg" alt="sair"/>
+            Sair</a>
+    </div>
+    </nav>  
+    </section>
+    <!-- Gestão de Cadastro - Produtos -->
+        <div class="conteudo-cadastro">
+        <form class="form-cadastro-produto">
+        
+        <!-- Campos à esquerda -->
+    <div class="form-esquerda">
+        <label for="nome-produto">Nome</label>
+        <input type="text" id="nome-produto" placeholder="Nome produto" />
+
+        <label for="codigo-produto">Cód. Prod</label>
+        <input type="text" id="codigo-produto" value="Novo" readonly />
+
+        <div class="linha-horizontal">
+        <div>
+            <label for="preco-produto">Preço</label>
+            <input type="text" id="preco-produto" placeholder="(R$)" />
+        </div>
+        <div>
+            <label for="validade-produto">Validade</label>
+            <input type="text" id="validade-produto" placeholder="_______/_______/_______" />
+        </div>
+        </div>
+
+        <label for="fornecedor-produto">Fornecedor</label>
+        <input type="text" id="fornecedor-produto" placeholder="Nome Fornecedor" />
+
+        <div class="linha-horizontal">
+        <div>
+            <label for="unidade-produto">Unidade</label>
+            <input type="text" id="unidade-produto" placeholder="UN" />
+        </div>
+        <div>
+            <label for="marca-produto">Marca</label>
+            <input type="text" id="marca-produto" placeholder="Marca..." />
+        </div>
+        <div>
+            <label for="tipo-produto">Tipo</label>
+            <input type="text" id="tipo-produto" placeholder="Produto" />
+        </div>
+        </div>
+
+        <div class="linha-horizontal">
+        <div>
+            <label for="estoquemin-produto">Estoque Mínimo</label>
+            <input type="text" id="estoquemin-produto" placeholder="UN" />
+        </div>
+        <div>
+            <label for="estoquemax-produto">Estoque Máximo</label>
+            <input type="text" id="estoquemax-produto" placeholder="UN" />
+        </div>
+        </div>
+
+        <div class="situacao">
+        <span>Situação</span>
+        <input type="radio" name="situacao" id="ativo" />
+        <label for="ativo">Ativo</label>
+
+        <input type="radio" name="situacao" id="inativo" />
+        <label for="inativo">Inativo</label>
+        </div>
+    </div>
+
+        <!-- Imagem produto -->
+    <div class="form-direita">
+        <div class="foto-produto">
+        <img width="100" height="100"src="img/arcticons_camera.svg" alt="foto" />
+        </div>
+    <div class="botoes">
+        <button type="button" class="btn-foto1">Tirar Foto</button>
+        <button type="button" class="btn-foto2">Localizar</button>
+    </div>
+    </div>
+        <!-- Botões Salvar e Cancelar -->
+        <div class="botoes-form">
+        <button type="submit" class="btn-salvar">Salvar</button>
+        <button type="button" class="btn-cancelar">Cancelar</button>
+        </div>
+    </form>
+</div>

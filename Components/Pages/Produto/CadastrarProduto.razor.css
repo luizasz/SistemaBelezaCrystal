@@ -1,0 +1,285 @@
+* {
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    border: none;
+    text-decoration: none;
+    transition: 0.2 linear;
+    
+}
+
+body {
+    font-family: "Inter", sans-serif;
+    display: flex;
+    height: 100%;
+    color: #111111;
+}
+
+section {
+    width: 200px;                
+    height: 100vh;               
+    background-color: #d9a8e6;  
+    display: flex;               
+    flex-direction: column;      
+}
+
+/*Estilização - Usuário*/
+.usuario {
+    background: #58246D;         
+    padding: 10px;          
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.usuario a {
+    font-size: 18px;             
+    font-weight: bold;          
+    color: #FFF;               
+    text-decoration: none;       
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    position: relative;
+    flex-direction: row;
+
+}
+
+.usuario a:hover {
+    color: #E4BCF3; /*tom mais claro ao passar o mouse*/
+}
+
+.usuario p {
+    color: #E4BCF3;                 
+    font-size: 10px;             
+    position: absolute;
+    top: 40px;
+    left: 58px;
+    margin: 0;
+    padding: 0;
+}
+
+.usuario img {
+    filter: brightness(0) invert(1); /*deixa o ícone branco*/
+} 
+
+/*Estilização - Menu Lateral*/
+.navmenu {
+    display: flex;               
+    flex-direction: column; 
+    flex-grow: 1;               
+}
+
+.navmenu a {
+    display: flex;               
+    align-items: center;         
+    gap: 10px;                   
+    padding: 12px 15px;         
+    font-size: 15px;             
+    color: #111111;                
+    text-decoration: none;       
+    transition: background 0.3s; 
+}
+
+.navmenu a img {
+    width: 20px;                 
+    height: 20px;                
+}
+
+.navmenu a:hover {
+    background: rgba(255,255,255,0.4); 
+}
+
+.navmenu .bottom-links {
+    margin-top: auto; /* Empurra para o final do menu */
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* Área do Formulário */
+.conteudo-cadastro {
+    background-color: white;
+    width: 100%;
+    padding: 20px;
+}
+
+.form-cadastro-produto {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    padding: 10px;
+}
+
+.form-esquerda {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+input[type="text"],
+input[type="number"] {
+    padding: 8px;
+    background-color: #e0e0e080;
+    border: 1px solid #e0e0e080;
+    border-radius: 8px;
+}
+
+label {
+    font-size: 14px;
+    color:#111111;
+}
+
+/* Linha com 2 ou 3 inputs lado a lado */
+.linha-horizontal {
+    flex: 1;
+    display: flex;
+    gap: 20px;
+}
+
+.linha-horizontal > div {
+    flex: 1;
+}
+
+/* Situação */
+.situacao {
+    border: 1px solid #58246D;
+    padding: 1rem;
+    width: max-content;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;               /* espaço entre palavra e botões */
+}
+
+/* Parte Direita - Imagem */
+.botoes {
+    display: flex; /* coloca os botões na mesma linha */
+    gap: 10px;     
+}
+
+.form-direita {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.foto-produto {
+    width: 220px; /*largura*/
+    height: 220px; /*altura*/
+    border: 1px solid #58246D;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;     
+    margin-bottom: 10px;  
+    padding: 10px;
+}
+
+.foto-produto img {
+    width: 200px;
+    height: 150px;
+    opacity: 0.5;
+}
+
+.btn-foto1 {
+    background-color: #58246D;
+    color: #FFF;
+    border: none;
+    border-radius: 8px;
+    padding: 6px 12px;
+    margin: 2px 0;
+    font-size: 12px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 10px;
+}
+
+.btn-foto1:hover {
+  background-color: #d9a8e6;     /* tom mais claro/escuro */  
+  transition: 0.2s ease-in-out;  /* transição suave */
+  color: #fff;                   /* garante que o texto continue visível */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* sombra leve */
+}
+
+.btn-foto2 {
+    background-color: #FFF;
+    border: 1px solid #58246D;
+    color: #58246D;
+    border-radius: 8px;
+    padding: 6px 12px;
+    margin: 2px 0;
+    font-size: 12px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 10px;
+}
+
+.btn-foto2:hover {
+    background-color: #d9a8e6;     /* muda cor de fundo */
+    transition: 0.2s ease-in-out;
+    color: #fff;                   /* garante que o texto continue visível */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* sombra leve */
+}
+
+/* Botões Salvar e Cancelar */
+.botoes-form {
+    flex: 0 0 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+    gap: 20px;
+}
+
+.btn-foto:hover {
+    background-color: #c5b5e3;
+    transform: scale(1.05);
+    transition: 0.2s ease-in-out;
+}
+
+.btn-salvar {
+    background-color: #58246D;
+    color: #FFF;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 150px;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.btn-salvar:hover {
+  background-color: #d9a8e6;     /* tom mais claro/escuro */  
+  transition: 0.2s ease-in-out;  /* transição suave */
+  color: #fff;                   /* garante que o texto continue visível */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* sombra leve */
+}
+
+.btn-cancelar {
+    color: #58246D;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: #FFF;
+    border: 1px solid #58246D;
+    width: 150px;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.btn-cancelar:hover {
+    background-color: #d9a8e6;     /* muda cor de fundo */
+    transition: 0.2s ease-in-out;
+    color: #fff;                   /* garante que o texto continue visível */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* sombra leve */
+}
+
+
+
