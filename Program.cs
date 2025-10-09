@@ -10,6 +10,7 @@ builder.Services.AddRazorComponents()
 
 builder.Services.AddScoped<Conexao>();
 builder.Services.AddScoped<FuncionarioDAO>();
+builder.Services.AddScoped<ProdutoDAO>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

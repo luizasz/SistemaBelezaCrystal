@@ -22,10 +22,10 @@ namespace SistemaBelezaCrystal.Models
                 var comando = _conexao.CreateCommand(@"
                     INSERT INTO funcionario 
                     (nome_fun, data_nascimento_fun, cpf_fun, rg_fun, telefone_fun, endereco_fun, bairro_fun, 
-                     cidade_fun, estado_fun, cep_fun, email_fun, salario_fun, id_car_fk, id_sit_fk)
+                    cidade_fun, estado_fun, cep_fun, email_fun, salario_fun, id_car_fk, id_sit_fk)
                     VALUES 
                     (@_nome, @_dataNascimento, @_cpf, @_rg, @_telefone, @_endereco, @_bairro, 
-                     @_cidade, @_estado, @_cep, @_email, @_salario, @_cargo, @_situacao)");
+                    @_cidade, @_estado, @_cep, @_email, @_salario, @_cargo, @_situacao)");
 
                 comando.Parameters.AddWithValue("@_nome", funcionario.Nome);
                 comando.Parameters.AddWithValue("@_dataNascimento", funcionario.DataNascimento);

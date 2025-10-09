@@ -7,6 +7,38 @@
     box-sizing: border-box;
 }
 
+.main {
+    flex: 1;
+    background-color: #f8f8f8;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.topbar {
+    background-color: #d9a8e6;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.topbar a {
+    color: #58246D;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.topbar a:hover {
+    text-decoration: underline;
+    color: #7f5091;
+}
+
 body {
     font-family: "Inter", sans-serif;
     display: flex;

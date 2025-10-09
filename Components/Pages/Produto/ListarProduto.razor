@@ -1,0 +1,55 @@
+@page "/Produto/Listar"
+@using SistemaBelezaCrystal.Models
+@inject ProdutoDAO produtoDAO
+
+<PageTitle>Produtos Cadastrados</PageTitle>
+
+<div class="conteudo-lista">
+    <h2 class="titulo-lista">Produtos Cadastrados</h2>
+
+    @if (produtos.Count == 0)
+    {
+        <div class="mensagem-vazia">
+            <p>Ainda não há produtos cadastrados.</p>
+        </div>
+    }
+    else
+    {
+        <table class="tabela-produtos">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Nome</th>
+                    <th>Preço</th>
+                    <th>Marca</th>
+                    <th>Validade</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    int contador = 1;
+                    foreach (var produto in produtos)
+                    {
+                        <tr>
+                            <td>@contador</td>
+                            <td>@produto.Nome</td>
+                            <td>@produto.Preco</td>
+                            <td>@produto.Marca</td>
+                            <td>@produto.Validade</td>
+                        </tr>;
+                        contador++;
+                    }
+                }
+            </tbody>
+        </table>
+    }
+</div>
+
+@code {
+    private List<Produto> produtos = new();
+
+    protected override void OnInitialized()
+    {
+        produtos = produtoDAO.ListarTodos();
+    }
+}
