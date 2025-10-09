@@ -1,6 +1,7 @@
 using SistemaBelezaCrystal.Components;
 using SistemaBelezaCrystal.Models;
 using SistemaBelezaCrystal.Config;
+using AppExemplo.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +10,7 @@ builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 
 builder.Services.AddScoped<Conexao>();
+builder.Services.AddScoped<FornecedorDAO>();
 builder.Services.AddScoped<FuncionarioDAO>();
 builder.Services.AddScoped<ProdutoDAO>();
 var app = builder.Build();

@@ -1,0 +1,65 @@
+@page "/fornecedor/Listar"
+@using AppExemplo.Models
+@using SistemaBelezaCrystal.Models
+@inject FornecedorDAO fornecedorDAO
+
+<PageTitle>Fornecedores Cadastrados</PageTitle>
+
+<div class="conteudo-lista">
+  <h2 class="titulo-lista">Fornecedores Cadastrados</h2>
+
+  <NavLink href="/fornecedor/cadastrar">
+    <button class="cadastrar-button">
+      Cadastrar fornecedor
+    </button>
+  </NavLink>
+
+  @if (fornecedores.Count == 0)
+  {
+    <div class="mensagem-vazia">
+      <p>Ainda não há fornecedores cadastrados.</p>
+    </div>
+  }
+  else
+  {
+    <table class="tabela-funcionarios">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Nome Fantasia</th>
+          <th>Telefone</th>
+          <th>Email</th>
+          <th>Cidade</th>
+          <th>Estado</th>
+        </tr>
+      </thead>
+      <tbody>
+        @{
+          int contador = 1;
+          foreach (Fornecedor fornecedor in fornecedores)
+          {
+            <tr>
+              <td>@contador</td>
+              <td>@fornecedor.NomeFantasia</td>
+              <td>@fornecedor.Telefone</td>
+              <td>@fornecedor.Email</td>
+              <td>@fornecedor.Cidade</td>
+              <td>@fornecedor.Estado</td>
+            </tr>
+            ;
+            contador++;
+          }
+        }
+      </tbody>
+    </table>
+  }
+</div>
+
+@code {
+  private List<Fornecedor> fornecedores = new();
+
+  protected override void OnInitialized()
+  {
+    fornecedores = fornecedorDAO.ListarTodos();
+  }
+}
