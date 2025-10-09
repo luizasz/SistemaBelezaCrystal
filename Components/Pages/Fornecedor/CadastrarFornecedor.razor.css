@@ -1,3 +1,41 @@
+.main {
+  flex: 1;
+  background-color: #f8f8f8;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.topbar {
+  background-color: #d4b5db;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 1.5rem 0;
+}
+
+.topbar a {
+  color: #58246d;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.topbar a:hover {
+  text-decoration: underline;
+  color: #6a0dad;
+}
+
+.pagina-atual {
+  color: #333;
+  font-weight: normal;
+}
+
 .form {
   display: flex;
   flex-direction: column;
@@ -73,3 +111,14 @@ button {
   gap: 27px;
 }
 
+.situacao {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.codigo-situacao {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+}

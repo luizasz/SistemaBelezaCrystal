@@ -1,67 +1,158 @@
 @page "/fornecedor/cadastrar"
 
+@rendermode InteractiveServer
+
+@using AppExemplo.Models;
+@inject FornecedorDAO fornecedorDAO;
+@inject NavigationManager Navigation;
+
 <PageTitle>Cadastrar Fornecedor</PageTitle>
 
-<form class="form">
-  <span class="label-input">
-    <label for="nome-fantasia">Nome Fantasia</label>
-    <input name="nome-fantasia" type="text">
-  </span>
+@if (erro != null)
+{
+  <div class="alert alert-danger">
+    @erro
+  </div>
+}
 
-  <span class="label-input">
-    <label for="razao-social">Razão Social</label>
-    <input name="razao-social" type="text">
-  </span>
 
-  <span class="label-input">
-    <label for="proprietario">Proprietário</label>
-    <input name="proprietario" type="text">
-  </span>
+<EditForm Model="_novoFornecedor" OnSubmit="Salvar">
 
-  <span id="cnpj-tel-insc">
+  <div class="form">
+    <div class="topbar">
+      <a href="/">Início</a>
+      <span class="pagina-atual">Cadastrar Fornecedor</span>
+    </div>
+
     <span class="label-input">
-      <label for="cnpj">CNPJ</label>
-      <input name="cnpj" type="text">
+      <label for="nome-fantasia">Nome Fantasia</label>
+      <input @bind-value="_novoFornecedor!.NomeFantasia" type="text" class="form-control" name="nome-fantasia" />
     </span>
 
     <span class="label-input">
-      <label for="telefone">Telefone</label>
-      <input name="telefone" type="text">
+      <label for="razao-social">Razão Social</label>
+      <input @bind-value="_novoFornecedor!.RazaoSocial" type="text" class="form-control" />
     </span>
 
     <span class="label-input">
-      <label for="inscricao-estadual">Inscrição Estadual</label>
-      <input name="inscricao-estadual" type="text">
+      <label for="proprietario">Proprietário</label>
+      <input @bind-value="_novoFornecedor!.Proprietario" type="text" class="form-control" name="proprietario" />
     </span>
-  </span>
 
-  <span class="label-input">
-    <label for="email">E-mail</label>
-    <input name="email" type="text">
-  </span>
+    <span id="cnpj-tel-insc">
+      <span class="label-input">
+        <label for="cnpj">CNPJ</label>
+        <input @bind-value="_novoFornecedor!.Cnpj" type="text" class="form-control" name="cnpj" />
+      </span>
 
-  <div class="form-footer">
+      <span class="label-input">
+        <label for="telefone">Telefone</label>
+        <input @bind-value="_novoFornecedor!.Telefone" type="text" class="form-control" name="telefone" />
+      </span>
+
+      <span class="label-input">
+        <label for="inscricao-estadual">Inscrição Estadual</label>
+        <input @bind-value="_novoFornecedor!.InscricaoEstadual" type="text" class="form-control"
+          name="inscricao-estadual" />
+      </span>
+    </span>
 
     <span class="label-input">
-      <label for="codigo">Código</label>
-      <input name="codigo" type="text">
+      <label for="email">E-mail</label>
+      <input @bind-value="_novoFornecedor!.Email" type="text" class="form-control" name="email" />
     </span>
-    <div>
-      <h3>Situação</h3>
-      <fieldset>
-        <input type="radio" name="situacao" id="ativo" />
-        <label for="ativo">Ativo</label>
 
-        <br />
+    <span class="label-input">
+      <label for="endereco">Endereço</label>
+      <input @bind-value="_novoFornecedor!.Endereco" type="text" class="form-control" name="endereco" />
+    </span>
 
-        <input type="radio" name="situacao" id="inativo" />
-        <label for="inativo">Inativo</label>
-      </fieldset>
+    <span class="label-input">
+      <label for="bairro">Bairro</label>
+      <input @bind-value="_novoFornecedor!.Bairro" type="text" class="form-control" name="bairro" />
+    </span>
+
+    <span class="label-input">
+      <label for="cidade">Cidade</label>
+      <input @bind-value="_novoFornecedor!.Cidade" type="text" class="form-control" name="cidade" />
+    </span>
+
+    <span class="label-input">
+      <label for="estado">Estado</label>
+      <input @bind-value="_novoFornecedor!.Estado" type="text" class="form-control" name="estado" maxlength="2" />
+    </span>
+
+    <span class="label-input">
+      <label for="cep">CEP</label>
+      <input @bind-value="_novoFornecedor!.Cep" type="text" class="form-control" name="cep" />
+    </span>
+
+    <span class="label-input">
+      <label for="tributacao">Tributação</label>
+      <input @bind-value="_novoFornecedor!.Tributacao" type="text" class="form-control" name="tributacao" />
+    </span>
+
+    <span class="label-input">
+      <label for="produtos-fornecidos">Produtos Fornecidos</label>
+      <input @bind-value="_novoFornecedor!.ProdutosFornecidos" type="text" class="form-control"
+        name="produtos-fornecidos" />
+    </span>
+
+    <div class="codigo-situacao">
+      <span class="label-input">
+        <label for="codigo">Código</label>
+        <input name="codigo" type="text">
+      </span>
+
+      <div class="situacao">
+        <h3>Situação</h3>
+        <InputRadioGroup @bind-Value="_novoFornecedor!.IdSituacaoFk">
+          <fieldset>
+            <InputRadio Value=1 /> Ativo
+            <br />
+            <InputRadio Value=2 /> Inativo
+          </fieldset>
+        </InputRadioGroup>
+      </div>
+    </div>
+
+    <div class="buttons">
+      <button class="submit-button" type="submit">Cadastrar</button>
+      <NavLink href="/fornecedor/listar">
+        <button class="cancel-button" type="button">Cancelar</button>
+      </NavLink>
     </div>
   </div>
 
-  <div class="buttons">
-    <button class="submit-button" type="submit">Cadastrar</button>
-    <button class="cancel-button" type="button">Cancelar</button>
-  </div>
-</form>
+</EditForm>
+
+
+@code {
+  private string? erro = null;
+
+  [SupplyParameterFromForm]
+  private SistemaBelezaCrystal.Models.Fornecedor? _novoFornecedor { get; set; } = new();
+
+  private void Salvar()
+  {
+
+    try
+    {
+      if (_novoFornecedor is null || _novoFornecedor.NomeFantasia == "")
+      {
+        throw new Exception("O campo nome fantasia é obrigatório");
+      }
+
+      fornecedorDAO.Inserir(_novoFornecedor);
+
+      Navigation.NavigateTo("/fornecedor/listar");
+    }
+    catch (Exception ex)
+    {
+      erro = ex.Message;
+    }
+
+
+  }
+
+}
