@@ -17,12 +17,25 @@ namespace AppExemplo.Models
     {
       try
       {
-        var comando = _conexao.CreateCommand("INSERT INTO fornecedor VALUES (null, null, @_nome, @_descricao, @_qtd, @_preco)");
+        var comando = _conexao.CreateCommand(
+            "INSERT INTO fornecedor VALUES (null, @_nome_fantasia, @_razao_social, @_proprietario, @_cnpj, @_inscricao_estadual, @_telefone, @_email, @_endereco, @_bairro, @_cidade, @_estado, @_cep, @_tributacao, @_produtos_fornecidos, @_id_situacao_fk)"
+        );
 
-        comando.Parameters.AddWithValue("@_nome", fornecedor.Nome);
-        comando.Parameters.AddWithValue("@_descricao", fornecedor.Descricao);
-        comando.Parameters.AddWithValue("@_qtd", fornecedor.Quantidade);
-        comando.Parameters.AddWithValue("@_preco", fornecedor.Preco);
+        comando.Parameters.AddWithValue("@_nome_fantasia", fornecedor.NomeFantasia);
+        comando.Parameters.AddWithValue("@_razao_social", fornecedor.RazaoSocial);
+        comando.Parameters.AddWithValue("@_proprietario", fornecedor.Proprietario);
+        comando.Parameters.AddWithValue("@_cnpj", fornecedor.Cnpj);
+        comando.Parameters.AddWithValue("@_inscricao_estadual", fornecedor.InscricaoEstadual);
+        comando.Parameters.AddWithValue("@_telefone", fornecedor.Telefone);
+        comando.Parameters.AddWithValue("@_email", fornecedor.Email);
+        comando.Parameters.AddWithValue("@_endereco", fornecedor.Endereco);
+        comando.Parameters.AddWithValue("@_bairro", fornecedor.Bairro);
+        comando.Parameters.AddWithValue("@_cidade", fornecedor.Cidade);
+        comando.Parameters.AddWithValue("@_estado", fornecedor.Estado);
+        comando.Parameters.AddWithValue("@_cep", fornecedor.Cep);
+        comando.Parameters.AddWithValue("@_tributacao", fornecedor.Tributacao);
+        comando.Parameters.AddWithValue("@_produtos_fornecidos", fornecedor.ProdutosFornecidos);
+        comando.Parameters.AddWithValue("@_id_situacao_fk", fornecedor.IdSituacaoFk);
 
         comando.ExecuteNonQuery();
 
@@ -33,25 +46,36 @@ namespace AppExemplo.Models
       }
     }
 
-    public List<Produto> ListarTodos()
+    public List<Fornecedor> ListarTodos()
     {
-      var lista = new List<Produto>();
+      var lista = new List<Fornecedor>();
 
-      var comando = _conexao.CreateCommand("SELECT * FROM produto");
+      var comando = _conexao.CreateCommand("SELECT * FROM fornecedor");
       var leitor = comando.ExecuteReader();
 
       while (leitor.Read())
       {
-        var produto = new Produto
+        var fornecedor = new Fornecedor
         {
-          Id = leitor.GetInt32("id_pro"),
-          Nome = leitor.GetString("nome_pro"),
-          Descricao = leitor.IsDBNull(leitor.GetOrdinal("descricao_pro")) ? "" : leitor.GetString("descricao_pro"),
-          Quantidade = leitor.GetInt32("quantidade_pro"),
-          Preco = leitor.GetDecimal("preco_pro")
+          Id = leitor.GetInt32("id_for"),
+          NomeFantasia = leitor.GetString("nome_fantasia_for"),
+          RazaoSocial = leitor.GetString("razao_social_for"),
+          Proprietario = leitor.GetString("proprietario_for"),
+          Cnpj = leitor.GetString("cnpj_for"),
+          InscricaoEstadual = leitor.GetString("inscricao_estadual_for"),
+          Telefone = leitor.GetString("telefone_for"),
+          Email = leitor.GetString("email_for"),
+          Endereco = leitor.GetString("endereco_for"),
+          Bairro = leitor.GetString("bairro_for"),
+          Cidade = leitor.GetString("cidade_for"),
+          Estado = leitor.GetString("estado_for"),
+          Cep = leitor.GetString("cep_for"),
+          Tributacao = leitor.GetString("tributacao_for"),
+          ProdutosFornecidos = leitor.GetString("produtos_fornecidos_for"),
+          IdSituacaoFk = leitor.GetInt32("id_sit_fk")
         };
 
-        lista.Add(produto);
+        lista.Add(fornecedor);
       }
 
       return lista;
