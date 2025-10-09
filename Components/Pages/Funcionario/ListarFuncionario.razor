@@ -1,3 +1,59 @@
-    @page "/Funcionario/Listar"
+@page "/Funcionario/Listar"
+@using SistemaBelezaCrystal.Models
+@inject FuncionarioDAO funcionarioDAO
 
-    <PageTitle>Funcionario/Listar</PageTitle>
+<PageTitle>Funcionários Cadastrados</PageTitle>
+
+<div class="conteudo-lista">
+    <h2 class="titulo-lista">Funcionários Cadastrados</h2>
+
+    @if (funcionarios.Count == 0)
+    {
+        <div class="mensagem-vazia">
+            <p>Ainda não há funcionários cadastrados.</p>
+        </div>
+    }
+    else
+    {
+        <table class="tabela-funcionarios">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Nome</th>
+                    <th>CPF</th>
+                    <th>Telefone</th>
+                    <th>Email</th>
+                    <th>Cidade</th>
+                    <th>Estado</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    int contador = 1;
+                    foreach (var funcionario in funcionarios)
+                    {
+                        <tr>
+                            <td>@contador</td>
+                            <td>@funcionario.Nome</td>
+                            <td>@funcionario.Cpf</td>
+                            <td>@funcionario.Telefone</td>
+                            <td>@funcionario.Email</td>
+                            <td>@funcionario.Cidade</td>
+                            <td>@funcionario.Estado</td>
+                        </tr>;
+                        contador++;
+                    }
+                }
+            </tbody>
+        </table>
+    }
+</div>
+
+@code {
+    private List<Funcionario> funcionarios = new();
+
+    protected override void OnInitialized()
+    {
+        funcionarios = funcionarioDAO.ListarTodos();
+    }
+}

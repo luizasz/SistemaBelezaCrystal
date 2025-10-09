@@ -1,3 +1,109 @@
     @page "/Funcionario"
 
-    <PageTitle>Funcionario</PageTitle>
+    <PageTitle>Funcionario</PageTitle> 
+
+<div class="main">
+    <div class="topbar">
+      <a href="inicio.html">Início</a> 
+      <span class="pagina-atual">Cadastrar Funcionário</span>
+    </div>
+
+
+    <div class="form-container">
+      <form class="form-layout">
+        <div class="top-section">
+          <div class="left">
+            <div class="form-group full-width">
+              <label>Nome</label>
+              <input type="text" placeholder="Nome Funcionário">
+            </div> <br>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label>Data Nascimento</label>
+                <input type="text" placeholder="__/__/____">
+              </div>
+              <div class="form-group">
+                <label>CPF</label>
+                <input type="text" placeholder="000.000.000-00">
+              </div>
+            </div>
+
+            <div class="form-row">
+
+              <div class="form-group">
+                <br>
+                <label>Telefone</label>
+                <input type="text" placeholder="(00) 00000-0000">
+              </div>
+              <div class="form-group">
+                <br>
+                <label>RG</label>
+                <input type="text" placeholder="0.000.000-0">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <br>
+            <label>Endereço</label>
+            <input type="text" placeholder="Logradouro, Nº">
+          </div>
+          <div class="form-group">
+            <br>
+            <label>Bairro</label>
+            <input type="text" placeholder="Bairro">
+          </div>
+          <div class="form-group">
+            <br>
+            <label>CEP</label>
+            <input type="text" placeholder="00000-000">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Cidade</label>
+            <input type="text" placeholder="Cidade">
+          </div>
+          <div class="form-group">
+            <label>Estado</label>
+            <input type="text" placeholder="Estado">
+          </div>
+          <div class="form-group">
+            <label>Cargo</label>
+            <select>
+              <option value=""></option>
+              <option value="manicure">Manicure</option>
+              <option value="atendente">Atendente</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" placeholder="Email">
+          </div>
+          <div class="form-group">
+            <label>Salário</label>
+            <input type="text" placeholder="R$">
+          </div>
+          <div class="form-group">
+            <label>Situação</label>
+            <div class="situacao">
+              <label><input type="radio" name="situacao" checked> Ativo</label>
+              <label><input type="radio" name="situacao"> Inativo</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="buttons">
+          <button id="salvar">Salvar</button>
+          <button id="cancelar">Cancelar</button>
+        </div>
+      </form>
+    </div>
+  </div>

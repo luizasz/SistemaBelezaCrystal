@@ -1,4 +1,6 @@
 using SistemaBelezaCrystal.Components;
+using SistemaBelezaCrystal.Models;
+using SistemaBelezaCrystal.Config;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -6,6 +8,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 
+builder.Services.AddScoped<Conexao>();
+builder.Services.AddScoped<FuncionarioDAO>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
