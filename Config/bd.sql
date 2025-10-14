@@ -117,7 +117,7 @@ create table servico (
 );
 
 -- Inserimento de dados
- 
+
 insert into sexo values (null,'Masculino'), (null,'Feminino'), (null,'Outro');
 
 insert into situacao values (null,'Ativo'), (null,'Inativo');

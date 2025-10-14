@@ -13,6 +13,7 @@ builder.Services.AddScoped<Conexao>();
 builder.Services.AddScoped<FornecedorDAO>();
 builder.Services.AddScoped<FuncionarioDAO>();
 builder.Services.AddScoped<ProdutoDAO>();
+/*builder.Services.AddScoped<AgendamentoDAO>();*/
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
