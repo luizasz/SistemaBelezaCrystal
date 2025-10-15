@@ -5,6 +5,7 @@
 @using SistemaBelezaCrystal.Models
 @inject ProdutoDAO produtoDAO;
 @inject FornecedorDAO fornecedorDAO;
+@inject CategoriaDAO categoriaDAO;
 @inject NavigationManager Navigation;
 
 <PageTitle>Produto</PageTitle>
@@ -73,11 +74,6 @@
                 }
               </select>
             </div>
-            
-            <div class="campo-form">
-              <label for="unidade-produto">Unidade</label>
-              <input @bind-value="_novoProduto!.Unidade" type="text" id="unidade-produto" placeholder="UN" />
-            </div>
           </div>
 
 
@@ -132,7 +128,8 @@
 
   protected override void OnInitialized()
   {
-    fornecedores = fornecedorDAO.ListcarTodos();
+    fornecedores = fornecedorDAO.ListarTodos();
+    categorias = categoriaDAO.Listar();
   }
 
 

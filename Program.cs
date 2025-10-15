@@ -13,6 +13,7 @@ builder.Services.AddScoped<Conexao>();
 builder.Services.AddScoped<FornecedorDAO>();
 builder.Services.AddScoped<FuncionarioDAO>();
 builder.Services.AddScoped<ProdutoDAO>();
+builder.Services.AddScoped<CategoriaDAO>();
 builder.Services.AddScoped<CargoDAO>();
 
 /*builder.Services.AddScoped<AgendamentoDAO>();*/
