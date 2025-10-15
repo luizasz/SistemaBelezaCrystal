@@ -14,6 +14,7 @@ builder.Services.AddScoped<FornecedorDAO>();
 builder.Services.AddScoped<FuncionarioDAO>();
 builder.Services.AddScoped<ProdutoDAO>();
 builder.Services.AddScoped<CategoriaDAO>();
+builder.Services.AddScoped<AgendamentoDAO>();
 builder.Services.AddScoped<CargoDAO>();
 
 /*builder.Services.AddScoped<AgendamentoDAO>();*/
