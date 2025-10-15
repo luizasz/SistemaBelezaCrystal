@@ -1,138 +1,141 @@
-
-.main {
-  flex: 1;
-  background-color: #f8f8f8;
-  padding: 30px;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  font-family: Arial, sans-serif;
+/* -------- Container geral -------- */
+.form {
+  width: 800px;
+  margin: 40px auto;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  padding: 25px 40px;
+  font-family: 'Segoe UI', sans-serif;
 }
 
+/* -------- Topo (Início + título) -------- */
 .topbar {
-  background-color: #d4b5db;
-  padding: 10px 20px;
-  border-radius: 8px;
-  font-weight: bold;
   display: flex;
   align-items: center;
-  gap: 8px;
-  flex-wrap: wrap;
+  background-color: #d7b3ef;
+  color: #4a1465;
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 8px;
+  margin-bottom: 25px;
 }
 
 .topbar a {
-  color: #58246D;
   text-decoration: none;
-  font-weight: bold;
+  color: #4a1465;
+  font-weight: 600;
+  margin-right: 10px;
 }
 
-.topbar a:hover {
-  text-decoration: underline;
-  color: #6a0dad;
-}
-
-.pagina-atual {
-  color: #333;
-  font-weight: normal;
-}
-
-.form-container {
-  background: white;
-  padding: 25px 30px;
-  border-radius: 10px;
-  box-shadow: 0 0 8px rgba(0,0,0,0.1);
-}
-
-.form-layout {
+/* -------- Estrutura básica dos campos -------- */
+.label-input {
   display: flex;
   flex-direction: column;
-  gap: 25px;
 }
 
-.top-section {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 30px;
-}
-
-.left {
-  flex: 1;
-}
-
-.form-row {
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-
-.form-group {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  min-width: 180px;
-}
-
-.full-width {
-  width: 100%;
-}
-
-label {
+.label-input label {
+  font-weight: 600;
+  color: #4a1465;
+  margin-bottom: 5px;
   font-size: 14px;
-  margin-bottom: 6px;
-  color: #333;
 }
 
-input,
-select {
-  padding: 8px 10px;
+.label-input input,
+.label-input select {
+  border: 1px solid #c9b5e6;
   border-radius: 8px;
-  border: 1px solid #aaa;
+  padding: 8px 10px;
   font-size: 14px;
-}
-
-input:focus,
-select:focus {
-  border-color: #58246D;
   outline: none;
 }
 
+.label-input input:focus,
+.label-input select:focus {
+  border-color: #7b3ea1;
+}
+
+/* -------- Linhas de campos -------- */
+.form-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.form-row .label-input {
+  flex: 1;
+}
+
+/* Nome ocupa toda a linha */
+.nome-full {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+/* Situação estilizada */
 .situacao {
+  flex: 1;
+  background-color: #f7f2fb;
+  border: 1px solid #c9b5e6;
+  border-radius: 8px;
+  padding: 10px 15px;
   display: flex;
-  gap: 20px;
-  margin-top: 8px;
+  flex-direction: column;
+  justify-content: center;
 }
 
-.situacao label {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  cursor: pointer;
+.situacao h3 {
   font-size: 14px;
+  color: #4a1465;
+  margin-bottom: 5px;
+  font-weight: 600;
 }
 
+/* -------- Botões -------- */
 .buttons {
   display: flex;
   justify-content: center;
   gap: 20px;
-  margin-top: 30px;
+  margin-top: 25px;
 }
 
-.buttons button {
-  padding: 10px 30px;
-  font-weight: bold;
-  border-radius: 8px;
-  font-size: 14px;
+.submit-button,
+.cancel-button {
   border: none;
+  padding: 10px 40px;
+  border-radius: 8px;
+  font-size: 15px;
   cursor: pointer;
+  font-weight: 600;
+  transition: 0.2s ease;
 }
 
-#salvar {
-  background-color: #58246D;
-  color: white;
+.submit-button {
+  background-color: #5c1b8c;
+  color: #fff;
 }
 
-#cancelar {
-  background-color: white;
-  color: #58246D;
-  border: 2px solid #58246D;
+.submit-button:hover {
+  background-color: #7124a6;
+}
+
+.cancel-button {
+  background-color: #ddd;
+  color: #333;
+}
+
+.cancel-button:hover {
+  background-color: #c9c9c9;
+}
+
+/* -------- Responsividade -------- */
+@media (max-width: 768px) {
+  .form {
+    width: 95%;
+    padding: 20px;
+  }
+  .form-row {
+    flex-direction: column;
+  }
 }

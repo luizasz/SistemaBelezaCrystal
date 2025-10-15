@@ -1,109 +1,152 @@
-    @page "/Funcionario"
+@page "/funcionario"
 
-    <PageTitle>Funcionario</PageTitle> 
+@rendermode InteractiveServer
 
-<div class="main">
+@using SistemaBelezaCrystal.Models
+@using AppExemplo.Models
+@inject FuncionarioDAO funcionarioDAO
+@inject CargoDAO cargoDAO
+@inject NavigationManager Navigation
+
+<PageTitle>Cadastrar Funcionário</PageTitle>
+
+@if (erro != null)
+{
+  <div class="alert alert-danger">
+    @erro
+  </div>
+}
+
+<EditForm Model="_novoFuncionario" OnSubmit="Salvar">
+  <div class="form">
     <div class="topbar">
-      <a href="inicio.html">Início</a> 
+      <a href="/">Início</a>
       <span class="pagina-atual">Cadastrar Funcionário</span>
     </div>
 
+    <span class="label-input">
+      <label for="nome">Nome</label>
+      <input @bind-value="_novoFuncionario!.Nome" type="text" class="form-control" name="nome" />
+    </span>
 
-    <div class="form-container">
-      <form class="form-layout">
-        <div class="top-section">
-          <div class="left">
-            <div class="form-group full-width">
-              <label>Nome</label>
-              <input type="text" placeholder="Nome Funcionário">
-            </div> <br>
+    <span class="label-input">
+      <label for="data-nascimento">Data de Nascimento</label>
+      <InputDate @bind-Value="_novoFuncionario!.DataNascimento" class="form-control" name="data-nascimento" />
+    </span>
 
-            <div class="form-row">
-              <div class="form-group">
-                <label>Data Nascimento</label>
-                <input type="text" placeholder="__/__/____">
-              </div>
-              <div class="form-group">
-                <label>CPF</label>
-                <input type="text" placeholder="000.000.000-00">
-              </div>
-            </div>
+    <span class="label-input">
+      <label for="cpf">CPF</label>
+      <input @bind-value="_novoFuncionario!.Cpf" type="text" class="form-control" name="cpf" />
+    </span>
 
-            <div class="form-row">
+    <span class="label-input">
+      <label for="rg">RG</label>
+      <input @bind-value="_novoFuncionario!.Rg" type="text" class="form-control" name="rg" />
+    </span>
 
-              <div class="form-group">
-                <br>
-                <label>Telefone</label>
-                <input type="text" placeholder="(00) 00000-0000">
-              </div>
-              <div class="form-group">
-                <br>
-                <label>RG</label>
-                <input type="text" placeholder="0.000.000-0">
-              </div>
-            </div>
-          </div>
-        </div>
+    <span class="label-input">
+      <label for="telefone">Telefone</label>
+      <input @bind-value="_novoFuncionario!.Telefone" type="text" class="form-control" name="telefone" />
+    </span>
 
-        <div class="form-row">
-          <div class="form-group">
-            <br>
-            <label>Endereço</label>
-            <input type="text" placeholder="Logradouro, Nº">
-          </div>
-          <div class="form-group">
-            <br>
-            <label>Bairro</label>
-            <input type="text" placeholder="Bairro">
-          </div>
-          <div class="form-group">
-            <br>
-            <label>CEP</label>
-            <input type="text" placeholder="00000-000">
-          </div>
-        </div>
+    <span class="label-input">
+      <label for="email">E-mail</label>
+      <input @bind-value="_novoFuncionario!.Email" type="email" class="form-control" name="email" />
+    </span>
 
-        <div class="form-row">
-          <div class="form-group">
-            <label>Cidade</label>
-            <input type="text" placeholder="Cidade">
-          </div>
-          <div class="form-group">
-            <label>Estado</label>
-            <input type="text" placeholder="Estado">
-          </div>
-          <div class="form-group">
-            <label>Cargo</label>
-            <select>
-              <option value=""></option>
-              <option value="manicure">Manicure</option>
-              <option value="atendente">Atendente</option>
-            </select>
-          </div>
-        </div>
+    <span class="label-input">
+      <label for="endereco">Endereço</label>
+      <input @bind-value="_novoFuncionario!.Endereco" type="text" class="form-control" name="endereco" />
+    </span>
 
-        <div class="form-row">
-          <div class="form-group">
-            <label>Email</label>
-            <input type="email" placeholder="Email">
-          </div>
-          <div class="form-group">
-            <label>Salário</label>
-            <input type="text" placeholder="R$">
-          </div>
-          <div class="form-group">
-            <label>Situação</label>
-            <div class="situacao">
-              <label><input type="radio" name="situacao" checked> Ativo</label>
-              <label><input type="radio" name="situacao"> Inativo</label>
-            </div>
-          </div>
-        </div>
+    <span class="label-input">
+      <label for="bairro">Bairro</label>
+      <input @bind-value="_novoFuncionario!.Bairro" type="text" class="form-control" name="bairro" />
+    </span>
 
-        <div class="buttons">
-          <button id="salvar">Salvar</button>
-          <button id="cancelar">Cancelar</button>
-        </div>
-      </form>
+    <span class="label-input">
+      <label for="cidade">Cidade</label>
+      <input @bind-value="_novoFuncionario!.Cidade" type="text" class="form-control" name="cidade" />
+    </span>
+
+    <span class="label-input">
+      <label for="estado">Estado</label>
+      <input @bind-value="_novoFuncionario!.Estado" type="text" class="form-control" name="estado" maxlength="2" />
+    </span>
+
+    <span class="label-input">
+      <label for="cep">CEP</label>
+      <input @bind-value="_novoFuncionario!.Cep" type="text" class="form-control" name="cep" />
+    </span>
+
+    <span class="label-input">
+      <label for="salario">Salário</label>
+      <input @bind-value="_novoFuncionario!.Salario" type="number" step="0.01" class="form-control" name="salario" />
+    </span>
+
+    <!-- SELETOR DE CARGO -->
+    <span class="label-input">
+      <label for="cargo">Cargo *</label>
+      <select @bind="_novoFuncionario!.IdCargo" class="form-control">
+        <option value="" disabled selected>Selecione um cargo</option>
+        @foreach (Cargo cargo in cargos)
+        {
+          <option value="@cargo.Id">@cargo.Nome</option>
+        }
+      </select>
+    </span>
+
+    <div class="situacao">
+      <h3>Situação</h3>
+      <InputRadioGroup @bind-Value="_novoFuncionario!.IdSituacao">
+        <fieldset>
+          <InputRadio Value=1 /> Ativo
+          <br />
+          <InputRadio Value=2 /> Inativo
+        </fieldset>
+      </InputRadioGroup>
+    </div>
+
+    <div class="buttons">
+      <button class="submit-button" type="submit">Cadastrar</button>
+      <NavLink href="/funcionario/listar">
+        <button class="cancel-button" type="button">Cancelar</button>
+      </NavLink>
     </div>
   </div>
+</EditForm>
+
+@code {
+  private string? erro = null;
+  private Funcionario _novoFuncionario = new();
+  private List<Cargo> cargos = new();
+
+  protected override void OnInitialized()
+  {
+    // Carrega a lista de cargos ao abrir a página
+    cargos = cargoDAO.Listar();
+  }
+
+  private void Salvar()
+  {
+    try
+    {
+      if (string.IsNullOrWhiteSpace(_novoFuncionario.Nome))
+      {
+        throw new Exception("O campo Nome é obrigatório.");
+      }
+
+      if (_novoFuncionario.IdCargo == 0)
+      {
+        throw new Exception("Selecione um cargo válido.");
+      }
+
+      funcionarioDAO.Inserir(_novoFuncionario);
+      Navigation.NavigateTo("/funcionario/listar");
+    }
+    catch (Exception ex)
+    {
+      erro = ex.Message;
+    }
+  }
+}
