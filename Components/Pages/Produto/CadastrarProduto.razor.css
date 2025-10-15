@@ -96,6 +96,13 @@ input[type="number"] {
     width: 100%;
 }
 
+select:focus,
+input:focus,
+textarea:focus {
+    outline: 2px solid #58246D;
+    background-color: #fff;
+}
+
 label {
     font-size: 13px;
     color: #111111;

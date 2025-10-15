@@ -45,3 +45,122 @@ body {
     height: 100%;
     color: #111111;
 }
+
+.conteudo-cadastro {
+    background-color: #f8f5f8;
+    padding: 2rem;
+    border-radius: 8px;
+    max-width: 600px;
+}
+
+.form-cadastro-agendamento {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.form-group {
+    max-width: 600px;
+}
+
+.form-group label {
+    margin-bottom: 8px;
+}
+
+.form-group input {
+    margin-top: 8px;
+}
+
+.form-row {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    max-width: 400px;
+}
+
+
+input[type="text"],
+input[type="date"],
+input[type="time"],
+select,
+textarea {
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    background-color: #e0e0e080;
+    border-radius: 0.9rem;
+    width: 100%;
+}
+
+select:focus,
+input:focus,
+textarea:focus {
+    outline: 2px solid #58246D;
+    background-color: #fff;
+}
+
+textarea {
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    background-color: #e0e0e080;
+    border-radius: 0.9rem;
+    width: 100%;
+    resize: none;
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.campo-nome,
+.linha-horizontal .campo-form {
+    margin-bottom: 16px;
+}
+
+/* Botões */
+button {
+    border: none;
+    border-radius: 10px;
+    width: max-content;
+    padding: 0.5rem 4rem;
+    font-size: 1.1rem;
+}
+
+.submit-button {
+    background-color: #58246d;
+    color: white;
+}
+
+.submit-button:hover {
+    background-color: #d9a8e6;
+    color: #fff;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    transition: 0.2s ease-in-out;
+}
+
+.cancel-button {
+    border: solid 1px #58246d;
+    color: #58246d;
+    background-color: white;
+}
+
+.cancel-button:hover {
+    background-color: #d9a8e6;
+    color: #fff;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    transition: 0.2s ease-in-out;
+}
+
+.buttons {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    gap: 27px;
+}
+
