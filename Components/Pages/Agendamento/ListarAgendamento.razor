@@ -1,0 +1,65 @@
+@page "/agendamento/Listar"
+@using AppExemplo.Models
+@using SistemaBelezaCrystal.Models
+@inject AgendamentoDAO agendamentoDAO
+
+<PageTitle>Agendamentos Cadastrados</PageTitle>
+
+<div class="conteudo-lista">
+  <h2 class="titulo-lista">Agendamentos Cadastrados</h2>
+
+  <NavLink href="/agendamento/cadastrar">
+    <button class="cadastrar-button">
+      Cadastrar agendamento
+    </button>
+  </NavLink>
+
+  @if (agendamentoes.Count == 0)
+  {
+    <div class="mensagem-vazia">
+      <p>Ainda não há agendamentos cadastrados.</p>
+    </div>
+  }
+  else
+  {
+    <table class="tabela-funcionarios">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Nome Fantasia</th>
+          <th>Telefone</th>
+          <th>Email</th>
+          <th>Cidade</th>
+          <th>Estado</th>
+        </tr>
+      </thead>
+      <tbody>
+        @{
+          int contador = 1;
+          foreach (agendamento agendamento in agendamentoes)
+          {
+            <tr>
+              <td>@contador</td>
+              <td>@agendamento.NomeFantasia</td>
+              <td>@agendamento.Telefone</td>
+              <td>@agendamento.Email</td>
+              <td>@agendamento.Cidade</td>
+              <td>@agendamento.Estado</td>
+            </tr>
+            ;
+            contador++;
+          }
+        }
+      </tbody>
+    </table>
+  }
+</div>
+
+@code {
+  private List<agendamento> agendamentoes = new();
+
+  protected override void OnInitialized()
+  {
+    agendamentoes = agendamentoDAO.ListarTodos();
+  }
+}
