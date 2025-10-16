@@ -1,31 +1,34 @@
 * {
     margin: 0;
     padding: 0;
-    outline: 0;
-    border: none;
-    text-decoration: none;
     box-sizing: border-box;
+    font-family: "Inter", sans-serif;
 }
 
+body {
+    background-color: #f8f5f8;
+    color: #333;
+}
+
+/* Container principal */
 .main {
-    flex: 1;
-    background-color: #f8f8f8;
-    padding: 30px;
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    font-family: Arial, sans-serif;
+    padding: 40px;
+    align-items: center;
 }
 
+/* Barra superior */
 .topbar {
-    background-color: #d9a8e6;
+    background-color: #e9d3ee;
     padding: 10px 20px;
     border-radius: 8px;
-    font-weight: bold;
     display: flex;
     align-items: center;
     gap: 8px;
-    flex-wrap: wrap;
+    width: 100%;
+    max-width: 800px;
+    justify-content: flex-start;
 }
 
 .topbar a {
@@ -36,12 +39,129 @@
 
 .topbar a:hover {
     text-decoration: underline;
-    color: #7f5091;
 }
 
-body {
-    font-family: "Inter", sans-serif;
+/* Container do formulário */
+.form-container {
+    background-color: #faf7fb;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    padding: 40px;
+    width: 100%;
+    max-width: 800px;
+    margin-top: 25px;
+}
+
+/* Layout dos campos */
+.form-layout {
     display: flex;
-    height: 100%;
-    color: #111111;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.form-row {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 180px;
+}
+
+.form-group.full-width {
+    width: 100%;
+}
+
+label {
+    font-weight: normal; /* <-- agora sem negrito */
+    margin-bottom: 6px;
+    color: #222;
+}
+
+/* Campos */
+input, select {
+    padding: 8px 14px;
+    border-radius: 12px;
+    border: 1px solid #999;
+    font-size: 14px;
+    background-color: white;
+    width: 100%;
+}
+
+input:focus, select:focus {
+    outline: 2px solid #B77EDA;
+}
+
+/* Campo com ícone */
+.input-icon {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.icon-btn {
+    background: #58246D;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.icon-btn:hover {
+    opacity: 0.85;
+}
+
+/* Botões inferiores */
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.buttons button {
+    padding: 10px 40px;
+    font-weight: bold;
+    font-size: 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: all 0.2s ease;
+}
+
+/* Botão salvar */
+#salvar {
+    background-color: #58246D;
+    color: #fff;
+    box-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
+
+#salvar:hover {
+    background-color: #743a8f;
+}
+
+/* Botão cancelar */
+#cancelar {
+    background-color: transparent;
+    color: #58246D;
+    border: 2px solid #B77EDA;
+}
+
+#cancelar:hover {
+    background-color: #f0e3f8;
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+    .form-row {
+        flex-direction: column;
+        align-items: stretch;
+    }
 }

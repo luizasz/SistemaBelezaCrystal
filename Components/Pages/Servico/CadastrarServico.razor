@@ -1,12 +1,58 @@
-    @page "/Servico"
+@page "/Servico"
 
-    <PageTitle>Servico</PageTitle> 
+<PageTitle>Serviço</PageTitle>
 
-    <div class="main">
-    <div class="topbar">
-        <a href="inicio.html">Início</a> 
-        <span class="pagina-atual">Cadastrar Serviço</span>
-    </div>
-    
-    </div>
+<div class="main">
+  <div class="topbar">
+    <a href="inicio.html">Início</a> ›
+    <span class="pagina-atual">Cadastrar Serviço</span>
+  </div>
 
+  <div class="form-container">
+    <form class="form-layout">
+
+      <div class="form-row">
+        <div class="form-group full-width">
+          <label>Nome</label>
+          <input type="text" placeholder="Nome do Serviço">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Duração</label>
+          <input type="text" placeholder="Tempo Estimado">
+        </div>
+
+        <div class="form-group">
+          <label>Categoria</label>
+          <div class="input-icon">
+            <input type="text" placeholder="Categoria">
+            <button type="button" class="icon-btn">🔍</button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Valor</label>
+          <input type="text" placeholder="R$">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group full-width">
+          <label>Funcionário Responsável</label>
+          <div class="input-icon">
+            <input type="text" placeholder="Pesquisar por...">
+            <button type="button" class="icon-btn">🔍</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="buttons">
+        <button id="salvar">Salvar</button>
+        <button id="cancelar">Cancelar</button>
+      </div>
+
+    </form>
+  </div>
+</div>
