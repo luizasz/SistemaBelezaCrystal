@@ -16,6 +16,7 @@ builder.Services.AddScoped<ProdutoDAO>();
 builder.Services.AddScoped<CategoriaDAO>();
 builder.Services.AddScoped<AgendamentoDAO>();
 builder.Services.AddScoped<CargoDAO>();
+builder.Services.AddScoped<ServicoDAO>();
 
 /*builder.Services.AddScoped<AgendamentoDAO>();*/
 var app = builder.Build();

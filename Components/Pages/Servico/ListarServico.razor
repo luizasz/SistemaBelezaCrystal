@@ -1,0 +1,63 @@
+@page "/servico/Listar"
+@using AppExemplo.Models
+@using SistemaBelezaCrystal.Models
+@inject ServicoDAO servicoDAO
+
+<PageTitle>Serviços Cadastrados</PageTitle>
+
+<div class="conteudo-lista">
+  <h2 class="titulo-lista">Serviços Cadastrados</h2>
+
+  <NavLink href="/servico">
+    <button class="cadastrar-button">
+      Cadastrar servico
+    </button>
+  </NavLink>
+
+  @if (servicos.Count == 0)
+  {
+    <div class="mensagem-vazia">
+      <p>Ainda não há serviços cadastrados.</p>
+    </div>
+  }
+  else
+  {
+    <table class="tabela-servicos">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Nome </th>
+          <th>Valor</th>
+          <th>Duração</th>
+          <th>Categoria</th>
+        </tr>
+      </thead>
+      <tbody>
+        @{
+          int contador = 1;
+          foreach (Servico servico in servicos)
+          {
+            <tr>
+              <td>@contador</td>
+              <td>@servico.Nome</td>
+              <td>@servico.Valor</td>
+              <td>@servico.Duracao</td>
+              <td>@servico.IdCategoriaFk</td>
+            </tr>
+            ;
+            contador++;
+          }
+        }
+      </tbody>
+    </table>
+  }
+</div>
+
+@code {
+  private List<Servico> servicos = new();
+
+  protected override void OnInitialized()
+  {
+    servicos = servicoDAO.ListarTodos();
+  }
+}
