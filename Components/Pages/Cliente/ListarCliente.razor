@@ -1,0 +1,62 @@
+@page "/Cliente/Listar"
+@using AppExemplo.Models
+@using SistemaBelezaCrystal.Models
+@inject ClienteDAO clienteDAO
+
+<PageTitle>Clientes Cadastrados</PageTitle>
+
+<div class="conteudo-lista">
+    <h2 class="titulo-lista">Clientes Cadastrados</h2>
+
+    <NavLink href="/cliente">
+        <button class="cadastrar-button">
+            Cadastrar Cliente
+        </button>
+    </NavLink>
+
+    @if (clientes.Count == 0)
+    {
+        <div class="mensagem-vazia">
+            <p>Ainda não há clientes cadastrados.</p>
+        </div>
+    }
+    else
+    {
+        <table class="tabela-clientes">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Nome</th>
+                    <th>CPF</th>
+                    <th>Telefone</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    int contador = 1;
+                    foreach (var cliente in clientes)
+                    {
+                        <tr>
+                            <td>@contador</td>
+                            <td>@cliente.Nome</td>
+                            <td>@cliente.CPF</td>
+                            <td>@cliente.Telefone</td>
+                            <td>@cliente.Email</td>
+                        </tr>
+                        contador++;
+                    }
+                }
+            </tbody>
+        </table>
+    }
+</div>
+
+@code {
+    private List<Cliente> clientes = new();
+
+    protected override void OnInitialized()
+    {
+        clientes = clienteDAO.ListarTodos();
+    }
+}

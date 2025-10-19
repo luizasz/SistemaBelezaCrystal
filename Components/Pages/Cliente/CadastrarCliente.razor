@@ -1,0 +1,144 @@
+@page "/Cliente"
+
+@rendermode InteractiveServer
+@using SistemaBelezaCrystal.Models
+@inject ClienteDAO clienteDAO
+@inject NavigationManager Navigation
+@using AppExemplo.Models
+
+<PageTitle>Cliente</PageTitle>
+
+@if (erro != null)
+{
+    <div class="alert alert-danger">
+        @erro
+    </div>
+}
+
+<EditForm Model="_novoCliente" OnValidSubmit="Salvar">
+    <div class="main">
+        <div class="topbar">
+            <a href="/">Início</a>
+            <span class="pagina-atual">Cadastrar Cliente</span>
+        </div>
+
+        <div class="conteudo-cadastro">
+            <div class="form-cadastro-cliente">
+                <div class="form-esquerda">
+
+                    <div class="campo-nome">
+                        <label for="nome-cliente">Nome</label>
+                        <input type="text" @bind="_novoCliente.Nome" id="nome-cliente" class="meu-estilo" />
+                    </div>
+
+                    <div class="linha-horizontal">
+                        <div class="campo-form">
+                            <label for="cpf-cliente">CPF</label>
+                            <input type="text" @bind="_novoCliente.CPF" id="cpf-cliente" class="meu-estilo" />
+                        </div>
+
+                        <div class="campo-form">
+                            <label for="telefone-cliente">Telefone</label>
+                            <input type="text" @bind="_novoCliente.Telefone" id="telefone-cliente" class="meu-estilo" />
+                        </div>
+                    </div>
+
+                    <div class="linha-horizontal">
+                        <div class="campo-form">
+                            <label for="endereco-cliente">Endereço</label>
+                            <input type="text" @bind="_novoCliente.Endereco" id="endereco-cliente" class="meu-estilo" />
+                        </div>
+
+                        <div class="campo-form">
+                            <label for="bairro-cliente">Bairro</label>
+                            <input type="text" @bind="_novoCliente.Bairro" id="bairro-cliente" class="meu-estilo" />
+                        </div>
+
+                        <div class="campo-form">
+                            <label for="cidade-cliente">Cidade</label>
+                            <input type="text" @bind="_novoCliente.Cidade" id="cidade-cliente" class="meu-estilo" />
+                        </div>
+                    </div>
+
+                    <div class="linha-horizontal">
+                        <div class="campo-form">
+                            <label for="estado-cliente">Estado</label>
+                            <input type="text" @bind="_novoCliente.Estado" id="estado-cliente" class="meu-estilo" />
+                        </div>
+
+                        <div class="campo-form">
+                            <label for="cep-cliente">CEP</label>
+                            <input type="text" @bind="_novoCliente.Cep" id="cep-cliente" class="meu-estilo" />
+                        </div>
+
+                        <div class="campo-form">
+                            <label for="complemento-cliente">Complemento</label>
+                            <input type="text" @bind="_novoCliente.Complemento" id="complemento-cliente" class="meu-estilo" />
+                        </div>
+                    </div>
+
+                    <div class="linha-horizontal">
+                        <div class="campo-form">
+                            <label for="sexo-cliente">Sexo</label>
+                            <select id="sexo-cliente" class="input-padrao" @bind="_novoCliente.IdSexoFk">
+                                <option value="" disabled>Selecione</option>
+                                <option value="1">Masculino</option>
+                                <option value="2">Feminino</option>
+                            </select>
+                        </div>
+
+                        <div class="campo-form">
+                            <label for="email-cliente">Email</label>
+                            <input type="text" @bind="_novoCliente.Email" id="email-cliente" class="meu-estilo" />
+                        </div>
+
+                        <div class="campo-form">
+                            <label for="observacoes-cliente">Observações</label>
+                            <input type="text" @bind="_novoCliente.Observacoes" id="observacoes-cliente" class="meu-estilo" />
+                        </div>
+                    </div>
+
+                    <div class="situacao">
+                        <h2>Situação</h2>
+                        <InputRadioGroup @bind-Value="_novoCliente.IdSituacaoFk">
+                            <fieldset>
+                                <InputRadio Value="1" /> Ativo
+                                <br />
+                                <InputRadio Value="2" /> Inativo
+                            </fieldset>
+                        </InputRadioGroup>
+                    </div>
+
+                    <div class="buttons">
+                        <button type="submit" class="submit-button">Cadastrar</button>
+                        <button type="button" class="cancel-button" @onclick="Cancelar">Cancelar</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</EditForm>
+
+@code {
+    private string? erro = null;
+    private Cliente _novoCliente { get; set; } = new Cliente();
+
+    private void Salvar()
+    {
+        try
+        {
+            clienteDAO.Inserir(_novoCliente);
+            Navigation.NavigateTo("/cliente/listar");
+        }
+        catch (Exception ex)
+        {
+            erro = ex.Message;
+        }
+    }
+
+    private void Cancelar()
+    {
+        _novoCliente = new Cliente();
+    }
+}
