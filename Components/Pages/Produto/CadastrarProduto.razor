@@ -1,158 +1,136 @@
 @page "/Produto"
 
 @rendermode InteractiveServer
-@using AppExemplo.Models;
 @using SistemaBelezaCrystal.Models
-@inject ProdutoDAO produtoDAO;
-@inject FornecedorDAO fornecedorDAO;
-@inject CategoriaDAO categoriaDAO;
-@inject NavigationManager Navigation;
+@inject ProdutoDAO produtoDAO
+@inject FornecedorDAO fornecedorDAO
+@inject NavigationManager Navigation
+@using AppExemplo.Models
 
 <PageTitle>Produto</PageTitle>
 
 @if (erro != null)
 {
-  <div class="alert alert-danger">
-    @erro
-  </div>
+    <div class="alert alert-danger">
+        @erro
+    </div>
 }
 
-<EditForm Model="_novoProduto" OnSubmit="Salvar">
-  <div class="main">
-    <div class="topbar">
-      <a href="/">Início</a>
-      <span class="pagina-atual">Cadastrar Produto</span>
-    </div>
-
-    <div class="conteudo-cadastro">
-      <div class="form-cadastro-produto">
-
-        <div class="form-esquerda">
-
-          <div class="campo-nome">
-            <label for="nome-produto">Nome</label>
-            <input @bind-value="_novoProduto!.Nome" type="text" id="nome-produto" placeholder="Nome produto" />
-          </div>
-
-          <div class="linha-horizontal">
-            <div class="campo-form">
-              <label for="preco-produto">Preço</label>
-              <input @bind-value="_novoProduto!.Preco" type="text" id="preco-produto" placeholder="(R$)" />
-            </div>
-
-            <div class="campo-form">
-              <label for="validade-produto">Validade</label>
-              <input @bind-value="_novoProduto!.Validade" type="text" id="validade-produto" placeholder="__/__/____" />
-            </div>
-          </div>
-
-          <div class="linha-horizontal">
-            <div class="campo-form">
-              <label for="fornecedor-produto">Fornecedor</label>
-              <select @bind="_novoProduto!.IdFornecedor" class="form-control" placeholder="Fornecedor...">
-                @foreach (var fornecedor in fornecedores)
-                {
-                  <option value="@fornecedor.Id">@fornecedor.NomeFantasia</option>
-                }
-              </select>
-            </div>
-
-            <div class="campo-form">
-              <label for="unidade-produto">Unidade</label>
-              <input @bind-value="_novoProduto!.Unidade" type="text" id="unidade-produto" placeholder="UN" />
-            </div>
-          </div>
-
-
-          <div class="linha-horizontal">
-            <div class="campo-form">
-              <label for="fornecedor-produto">Categoria</label>
-              <select @bind="_novoProduto!.IdCategoria" class="form-control" placeholder="Categoria...">
-                @foreach (var categoria in categorias)
-                {
-                  <option value="@categoria.Id">@categoria.Nome</option>
-                }
-              </select>
-            </div>
-          </div>
-
-
-          <div class="linha-horizontal">
-            <div class="campo-form">
-              <label for="marca-produto">Marca</label>
-              <input @bind-value="_novoProduto!.Marca" type="text" id="marca-produto" placeholder="Marca..." />
-            </div>
-            <div class="campo-form">
-              <label for="tipo-produto">Tipo</label>
-              <input @bind-value="_novoProduto!.Tipo" type="text" id="tipo-produto" placeholder="Produto" />
-            </div>
-          </div>
-
-          <div class="linha-horizontal">
-            <div class="campo-form">
-              <label for="estoquemin-produto">Estoque Mínimo</label>
-              <input @bind-value="_novoProduto!.EstoqueMinimo" type="text" id="estoquemin-produto" placeholder="UN" />
-            </div>
-            <div class="campo-form">
-              <label for="estoquemax-produto">Estoque Máximo</label>
-              <input @bind-value="_novoProduto!.EstoqueMaximo" type="text" id="estoquemax-produto" placeholder="UN" />
-            </div>
-          </div>
-
-          <div class="situacao">
-            <h2>Situação</h2>
-            <InputRadioGroup @bind-Value="_novoProduto!.IdSituacao">
-              <fieldset>
-                <InputRadio Value=1 /> Ativo
-                <br />
-                <InputRadio Value=2 /> Inativo
-              </fieldset>
-            </InputRadioGroup>
-          </div>
-
-          <div class="buttons">
-            <button class="submit-button" type="submit">Cadastrar</button>
-
-            <button class="cancel-button">Cancelar</button>
-          </div>
+<EditForm Model="_novoProduto" OnValidSubmit="Salvar">
+    <div class="main">
+        <div class="topbar">
+            <a href="/">Início</a>
+            <span class="pagina-atual">Cadastrar Produto</span>
         </div>
-      </div>
+
+        <div class="conteudo-cadastro">
+            <div class="form-cadastro-produto">
+                <div class="form-esquerda">
+
+                    <div class="campo-nome">
+                        <label for="nome-produto">Nome</label>
+                        <input type="text" @bind="_novoProduto.Nome" id="nome-produto" class="meu-estilo" />
+                    </div>
+
+                    <div class="linha-horizontal">
+                        <div class="campo-form">
+                            <label for="preco-produto">Preço</label>
+                            <input type="number" @bind="_novoProduto.Preco" id="preco-produto" step="0.01" placeholder="(R$)" class="meu-estilo" />
+                        </div>
+
+                        <div class="campo-form">
+                            <label for="validade-produto">Validade</label>
+                            <input type="date" @bind="_novoProduto.Validade" id="validade-produto"  class="meu-estilo" />
+                        </div>
+                    </div>
+
+                    <div class="linha-horizontal">
+                        <div class="campo-form">
+                            <label for="fornecedor-produto">Fornecedor</label>
+                            <select @bind="_novoProduto.IdFornecedorFk" id="fornecedor-produto" class="input-padrao">
+                                @foreach (var f in fornecedores)
+                                {
+                                    <option value="@f.Id">@f.NomeFantasia</option>
+                                }
+                            </select>
+                        </div>
+
+                        <div class="campo-form">
+                            <label for="unidade-produto">Unidade</label>
+                            <input type="number" @bind="_novoProduto.Unidade" id="unidade-produto" class="meu-estilo" />
+                        </div>
+                    </div>
+
+                    <div class="linha-horizontal">
+                        <div class="campo-form">
+                            <label for="marca-produto">Marca</label>
+                            <input type="text" @bind="_novoProduto.Marca" id="marca-produto" class="meu-estilo" />
+                        </div>
+
+                        <div class="campo-form">
+                            <label for="tipo-produto">Tipo</label>
+                            <input type="text" @bind="_novoProduto.Tipo" id="tipo-produto" class="meu-estilo" />
+                        </div>
+                    </div>
+
+                    <div class="linha-horizontal">
+                        <div class="campo-form">
+                            <label for="estoquemin-produto">Estoque Mínimo</label>
+                            <input type="number" @bind="_novoProduto.EstoqueMinimo" id="estoquemin-produto" class="meu-estilo" />
+                        </div>
+                        <div class="campo-form">
+                            <label for="estoquemax-produto">Estoque Máximo</label>
+                            <input type="number" @bind="_novoProduto.EstoqueMaximo" id="estoquemax-produto" class="meu-estilo" />
+                        </div>
+                    </div>
+
+                    <div class="situacao">
+                        <h2>Situação</h2>
+                        <InputRadioGroup @bind-Value="_novoProduto.IdSituacaoFk">
+                            <fieldset>
+                                <InputRadio Value="1" /> Ativo
+                                <br />
+                                <InputRadio Value="2" /> Inativo
+                            </fieldset>
+                        </InputRadioGroup>
+                    </div>
+
+                    <div class="buttons">
+                        <button type="submit" class="submit-button">Cadastrar</button>
+                        <button type="button" class="cancel-button" @onclick="Cancelar">Cancelar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
 </EditForm>
 
 @code {
-  private string? erro = null;
-  private List<Fornecedor> fornecedores = new();
-  private List<Categoria> categorias = new();
+    private string? erro = null;
+    private List<Fornecedor> fornecedores = new();
 
-  protected override void OnInitialized()
-  {
-    fornecedores = fornecedorDAO.ListarTodos();
-    categorias = categoriaDAO.Listar();
-  }
+    private Produto _novoProduto { get; set; } = new();
 
-
-  [SupplyParameterFromForm]
-  private SistemaBelezaCrystal.Models.Produto _novoProduto { get; set; } = new();
-
-  private void Salvar()
-  {
-
-    try
+    protected override void OnInitialized()
     {
-      if (_novoProduto is null || _novoProduto.Nome == "")
-      {
-        throw new Exception("O campo nome é obrigatório");
-      }
-
-      produtoDAO.Inserir(_novoProduto);
-
-      Navigation.NavigateTo("/produto/listar");
+        fornecedores = fornecedorDAO.ListarTodos();
     }
-    catch (Exception ex)
+
+    private void Salvar()
     {
-      erro = ex.Message;
+        try
+        {
+            produtoDAO.Inserir(_novoProduto);
+            Navigation.NavigateTo("/produto/listar");
+        }
+        catch (Exception ex)
+        {
+            erro = ex.Message;
+        }
     }
-  }
+
+    private void Cancelar()
+    {
+        _novoProduto = new Produto();
+    }
 }

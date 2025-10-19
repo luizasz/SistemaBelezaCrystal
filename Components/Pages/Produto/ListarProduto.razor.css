@@ -41,3 +41,14 @@
     color: #777;
     font-style: italic;
 }
+
+.cadastrar-button {
+    border: none;
+    border-radius: 10px;
+    width: max-content;
+    padding: 0.5rem 4rem;
+    font-size: 1.1rem;
+    background-color: #58246d;
+    color: white;
+    margin-bottom: 1.5rem;
+}

@@ -22,10 +22,10 @@ namespace SistemaBelezaCrystal.Models
                 var comando = _conexao.CreateCommand(@"
                 INSERT INTO produto
                 (nome_prod, preco_prod, validade_prod, marca_prod, tipo_prod, unidade_prod, 
-                estoque_minimo_prod, estoque_maximo_prod,id_for_fk, id_cat_fk, id_sit_fk)
+                estoque_minimo_prod, estoque_maximo_prod,id_for_fk, id_sit_fk)
                 VALUES
                 (@_nome, @_preco, @_validade, @_marca, @_tipo, @_unidade, @_estoqueMinimo, 
-                @_estoqueMaximo, @_fornecedor, @_categoria, @_situacao)");
+                @_estoqueMaximo, @_fornecedor, @_situacao)");
 
                 comando.Parameters.AddWithValue("@_nome", produto.Nome);
                 comando.Parameters.AddWithValue("@_preco", produto.Preco);
@@ -35,9 +35,8 @@ namespace SistemaBelezaCrystal.Models
                 comando.Parameters.AddWithValue("@_unidade", produto.Unidade);
                 comando.Parameters.AddWithValue("@_estoqueMinimo", produto.EstoqueMinimo);
                 comando.Parameters.AddWithValue("@_estoqueMaximo", produto.EstoqueMaximo);
-                comando.Parameters.AddWithValue("@_fornecedor", produto.IdFornecedor);
-                comando.Parameters.AddWithValue("@_categoria", produto.IdCategoria);
-                comando.Parameters.AddWithValue("@_situacao", produto.IdSituacao);
+                comando.Parameters.AddWithValue("@_fornecedor", produto.IdFornecedorFk);
+                comando.Parameters.AddWithValue("@_situacao", produto.IdSituacaoFk);
 
                 comando.ExecuteNonQuery();
             }
@@ -68,9 +67,8 @@ namespace SistemaBelezaCrystal.Models
                     Unidade = leitor.GetInt32("unidade_prod"),
                     EstoqueMinimo = leitor.GetInt32("estoque_minimo_prod"),
                     EstoqueMaximo = leitor.GetInt32("estoque_maximo_prod"),
-                    IdFornecedor = leitor.GetInt32("id_for_fk"),
-                    IdCategoria = leitor.GetInt32("id_cat_fk"),
-                    IdSituacao = leitor.GetInt32("id_sit_fk")
+                    IdFornecedorFk = leitor.GetInt32("id_for_fk"),
+                    IdSituacaoFk = leitor.GetInt32("id_sit_fk")
                 };
 
                 lista.Add(produto);
