@@ -1,0 +1,93 @@
+@page "/produto/{Id:int}/excluir"
+@rendermode InteractiveServer
+
+@using SistemaBelezaCrystal.Models
+@inject ProdutoDAO produtoDAO
+@inject NavigationManager Navigation
+
+<PageTitle>Excluir Produto</PageTitle>
+
+@if (!string.IsNullOrEmpty(erro))
+{
+    <div class="main">
+        <div class="topbar">
+            <a href="/">Início</a>
+            <span class="pagina-atual">Excluir Produto</span>
+        </div>
+        <div class="conteudo-cadastro">
+            <div class="alert alert-danger">@erro</div>
+        </div>
+    </div>
+}
+else if (produto != null)
+{
+    <div class="main">
+        <div class="topbar">
+            <a href="/">Início</a>
+            <span class="pagina-atual">Excluir Produto</span>
+        </div>
+
+        <div class="conteudo-cadastro">
+            <div class="alerta-exclusao">
+                <h2>Atenção!</h2>
+                <p>Você está prestes a excluir o produto <strong>@produto.Nome</strong>.</p>
+                <p class="texto-alerta">Esta ação <strong>não pode ser desfeita</strong>!</p>
+            </div>
+        </div>
+
+        <div class="buttons">
+            <button class="submit-button" @onclick="Excluir">Excluir</button>
+            <button class="cancel-button" @onclick="Cancelar">Cancelar</button>
+        </div>
+    </div>
+}
+else
+{
+    <p>Carregando informações do produto...</p>
+}
+
+@code {
+    [Parameter]
+    public int Id { get; set; }
+
+    private Produto? produto;
+    private string erro = string.Empty;
+
+    protected override void OnInitialized()
+    {
+        try
+        {
+            produto = produtoDAO.BuscarPorId(Id);
+
+            if (produto == null)
+            {
+                erro = "Produto não encontrado.";
+            }
+        }
+        catch (Exception ex)
+        {
+            erro = "Erro ao buscar produto: " + ex.Message;
+        }
+    }
+
+    private void Excluir()
+    {
+        try
+        {
+            if (produto != null)
+            {
+                produtoDAO.Excluir(produto.Id);
+                Navigation.NavigateTo("/Produto/Listar");
+            }
+        }
+        catch (Exception ex)
+        {
+            erro = "Erro ao excluir o produto: " + ex.Message;
+        }
+    }
+
+    private void Cancelar()
+    {
+        Navigation.NavigateTo("/Produto/Listar");
+    }
+}

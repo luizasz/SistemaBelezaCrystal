@@ -1,0 +1,141 @@
+/* Reset básico e base */
+* {
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    border: none;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+.main {
+    flex: 1;
+    background-color: #f8f8f8;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.topbar {
+    background-color: #d9a8e6;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.topbar a {
+    color: #58246D;
+    font-weight: bold;
+}
+
+.topbar a:hover {
+    text-decoration: underline;
+    color: #7f5091;
+}
+
+.conteudo-cadastro {
+    background-color: white;
+    width: 100%;
+    min-height: 80vh; 
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;  
+    align-items: center;     
+    gap: 40px;                
+    box-sizing: border-box;
+}
+
+/* Caixa de alerta de exclusão */
+.alerta-exclusao {
+    background-color: #f8e8fd;
+    border: 1.5px solid #58246D;
+    padding: 25px 20px;
+    border-radius: 10px;
+    color: #4b0866;
+    font-weight: 600;
+    text-align: center;
+    max-width: 600px;      
+    box-shadow: 0 4px 8px rgba(216, 27, 96, 0.2); 
+    width: 100%;          
+}
+
+.alerta-exclusao h2 {
+    margin-bottom: 10px;
+    font-size: 1.8rem;
+}
+
+.alerta-exclusao p {
+    font-size: 1.1rem;
+    margin-bottom: 6px;
+}
+
+.alerta-exclusao .texto-alerta {
+    font-weight: 700;
+}
+
+/* Botões fixos embaixo, centralizados */
+.buttons {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 27px;
+    justify-content: center;
+    align-items: center;
+    max-width: 600px; 
+    width: auto; 
+    z-index: 1000; 
+}
+
+/* Botão excluir - submit-button */
+.submit-button {
+    background-color: #58246d;
+    color: white;
+    padding: 12px 48px;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+}
+
+.submit-button:hover {
+    background-color: #d9a8e6;
+    color: #fff;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* Botão cancelar */
+.cancel-button {
+    border: solid 1px #58246d;
+    color: #58246d;
+    background-color: white;
+    padding: 12px 48px;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+}
+
+.cancel-button:hover {
+    background-color: #d9a8e6;
+    color: #fff;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+button {
+    border: none;
+    border-radius: 10px;
+    padding: 0.5rem 4rem;
+    font-size: 1.1rem;
+    cursor: pointer;
+}

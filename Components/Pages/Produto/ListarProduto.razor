@@ -30,6 +30,7 @@
                     <th>Preço</th>
                     <th>Marca</th>
                     <th>Validade</th>
+                    <th>Acões</th>
                 </tr>
             </thead>
             <tbody>
@@ -43,6 +44,14 @@
                             <td>@produto.Preco</td>
                             <td>@produto.Marca</td>
                             <td>@produto.Validade</td>
+                            <td>
+                                <a href="/produtos/@produto.Id/editar" class="btn btn-sm btn-primary mr-2">
+                                    <i class="fas fa-edit"></i> Atualizar
+                                </a>
+                                <a href="/produtos/@produto.Id/excluir" class="btn btn-sm btn-danger">
+                                    <i class="fas fa-trash"></i> Excluir
+                                </a>
+                            </td>
                         </tr>
                         contador++;
                     }

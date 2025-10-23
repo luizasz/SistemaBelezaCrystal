@@ -1,0 +1,144 @@
+@page "/produtos/{Id:int}/editar"
+@rendermode InteractiveServer
+@using SistemaBelezaCrystal.Models
+@inject ProdutoDAO produtoDAO
+@inject NavigationManager Navigation
+@inject FornecedorDAO fornecedorDAO
+@using AppExemplo.Models
+
+<PageTitle>Editar Produto</PageTitle>
+
+@if (!string.IsNullOrEmpty(erro))
+{
+    <div class="alert alert-danger">@erro</div>
+}
+
+<EditForm Model="produto" OnValidSubmit="Salvar">
+    <div class="main">
+        <div class="topbar">
+            <a href="/">Início</a>
+            <span class="pagina-atual">Editar Produto</span>
+        </div>
+
+        <div class="conteudo-cadastro">
+            <div class="form-cadastro-produto">
+                <div class="form-esquerda">
+
+                    <div class="campo-nome">
+                        <label>Nome</label>
+                        <input type="text" @bind="produto.Nome" class="meu-estilo" />
+                    </div>
+
+                    <div class="linha-horizontal">
+                        <div class="campo-form">
+                            <label>Preço</label>
+                            <input type="number" @bind="produto.Preco" step="0.01" class="meu-estilo" />
+                        </div>
+                        <div class="campo-form">
+                            <label>Validade</label>
+                            <input type="date" @bind="produto.Validade" class="meu-estilo" />
+                        </div>
+                    </div>
+
+                    <div class="linha-horizontal">
+                        <div class="campo-form">
+                            <label>Fornecedor</label>
+                            <select @bind="produto.IdFornecedorFk" class="input-padrao">
+                                @foreach (var f in fornecedores)
+                                {
+                                    <option value="@f.Id">@f.NomeFantasia</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="campo-form">
+                            <label>Unidade</label>
+                            <input type="number" @bind="produto.Unidade" class="meu-estilo" />
+                        </div>
+                    </div>
+
+                    <div class="linha-horizontal">
+                        <div class="campo-form">
+                            <label>Marca</label>
+                            <input type="text" @bind="produto.Marca" class="meu-estilo" />
+                        </div>
+                        <div class="campo-form">
+                            <label>Tipo</label>
+                            <input type="text" @bind="produto.Tipo" class="meu-estilo" />
+                        </div>
+                    </div>
+
+                    <div class="linha-horizontal">
+                        <div class="campo-form">
+                            <label>Estoque Mínimo</label>
+                            <input type="number" @bind="produto.EstoqueMinimo" class="meu-estilo" />
+                        </div>
+                        <div class="campo-form">
+                            <label>Estoque Máximo</label>
+                            <input type="number" @bind="produto.EstoqueMaximo" class="meu-estilo" />
+                        </div>
+                    </div>
+
+                    <div class="situacao">
+                        <h2>Situação</h2>
+                        <InputRadioGroup @bind-Value="produto.IdSituacaoFk">
+                            <fieldset>
+                                <InputRadio Value="1" /> Ativo
+                                <br />
+                                <InputRadio Value="2" /> Inativo
+                            </fieldset>
+                        </InputRadioGroup>
+                    </div>
+
+                    <div class="buttons">
+                        <button type="submit" class="submit-button">Salvar</button>
+                        <button type="button" class="cancel-button" @onclick="Cancelar">Cancelar</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</EditForm>
+
+@code {
+    [Parameter]
+    public int Id { get; set; }
+
+    private Produto produto = new Produto();
+    private string erro = string.Empty;
+    private List<Fornecedor> fornecedores = new();
+
+    protected override void OnInitialized()
+    {
+        fornecedores = fornecedorDAO.ListarTodos();
+
+        var p = produtoDAO.BuscarPorId(Id);
+        if (p != null)
+        {
+            produto = p;
+            produto.IdSituacaoFk = 0;
+        }
+        else
+        {
+            erro = "Produto não encontrado.";
+        }
+    }
+
+    private void Salvar()
+    {
+        try
+        {
+            produtoDAO.Atualizar(produto);
+            Navigation.NavigateTo("/produto/listar");
+        }
+        catch (Exception ex)
+        {
+            erro = "Erro ao salvar o produto: " + ex.Message;
+        }
+    }
+
+    private void Cancelar()
+    {
+        Navigation.NavigateTo("/produto/listar");
+    }
+}
